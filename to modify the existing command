@@ -1,0 +1,48 @@
+db.runCommand({
+            collMod:"personal",
+            validator:{
+                $jsonSchema:{
+             required:["name","age","weight" ,"address","hobbies"],
+            properties:{
+                name:{
+                   bsonType:"string",
+                   description:"name must be in a String and is required"       
+                },
+                age:{
+                    bsonType:"int",
+                    description:"must be interger and in range 20-29"
+                },
+                 weight:{
+                     bsonType:"int",
+                     description:"weight must be in integer"
+                 },
+                 address:{
+                 bsonType:"string",
+                  required:["street","city","zip"],
+                  properties:{
+                      street:{
+                         bsonType:"int",
+                        description:"street must be in integer and is required"
+                      },
+                     city:{
+                         bsonType:"string",
+                         description:"streets in strings"
+                     },
+                     zip:{
+                         bsonType:"int",
+                         description:"zip requires in integer"
+                     }
+                  },
+                 description:"addres in req street ,city,zip"
+                },
+                 hobbies:{
+                     bsonType:"string",
+                     items:{
+                         bsonType:"string"
+                     },
+                     description:"hoobies is required in string"
+                }
+             }
+            }
+          }
+       });

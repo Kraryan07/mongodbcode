@@ -1,0 +1,23 @@
+db.createCollection("students",{
+            validator:{
+                $jsonSchema:{
+                    title:"student object validation",
+                    required:["name","age","course"],
+                    properties:{
+                         name:{
+                             bsonType:"string",
+                             description:"not in string"
+                         },
+                          age:{
+                            bsonType:"int",
+                              description:"not an integer"
+                          },
+                          course:{
+                           bsonType:"string",
+                              enum:["BCA","Btech","bsc"],
+                              description:"choose course from bca,btech,bsc"
+                          }
+                    }
+                }
+            }
+        });

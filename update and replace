@@ -1,0 +1,45 @@
+to update the vari and of the var is  not present then it will automatically put that value in all
+db.students.updateMany(
+            {},
+            {$currentDate:{"lastModified":true}}
+         )
+
+to replace any value in document and make sure it is  not in required format
+ db.students.updateOne(
+            {name:"aryan"},
+            {$unset:{age:""}}
+         )
+
+same with (inc) to increment any value (mul) to multiply any value
+
+min and max value
+ db.students.insertOne(
+            {name:'ram',},
+            {$min:{"weight":20}}
+         )
+same with max (if value is smaller then min the it will updated,if vlaue is smaller than given then it will updated)
+
+
+array operation
+db.personal.updateOne(
+            {_id: ObjectId('695113ad1500b6aea61e2624')},
+             {$push:{"hobbies":"coding"}}
+         )
+to delete
+ db.personal.updateOne(
+            {_id: ObjectId('695113ad1500b6aea61e2624')},
+             {$pop:{"hobbies":1}}
+         )
+{1: for the last val , -1:for the first value}
+
+to delete specifically
+ db.personal.updateOne(
+            {_id: ObjectId('695113ad1500b6aea61e2624')},
+             {$pull:{"hobbies":"football"}}
+         )
+
+to replace any value with existing value
+ db.students.replaceOne(
+            { _id: ObjectId('69514d62253d191e571e2622')},
+            {name:"gogo",age:21,course:"BCA"}
+         )

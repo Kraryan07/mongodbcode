@@ -1,0 +1,19 @@
+or operator(any condition match)
+db.students.find({$or:[
+  {"age":{$gt:30}},
+  {"age":{$lt:40}}]
+});
+
+and operator(both conditions shoud be matched here)
+db.students.find({$and:[
+  {"age":{$gt:30}},
+  {"age":{$lt:40}}]
+});
+
+both condition shoud not match
+db.students.find({$nor:[
+  {"course":{$eq:"bsc"}},
+  {"age":{$lt:40}}]
+});
+
+and more with update and delete functions

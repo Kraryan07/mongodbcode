@@ -1,0 +1,8 @@
+it  will select that id and delete that item
+db.students.deleteOne({_id: ObjectId('695223febef95bbbe61e2623')}
+
+ db.students.deleteOne({course:"BCA"})
+it will delete the record matching with first element
+
+to delete may elements having same property
+     db.students.deleteMany({course:"bsc"})

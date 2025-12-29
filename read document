@@ -1,0 +1,51 @@
+it will show you the all the records
+db.students.find({course:"Btech"})
+
+findOne will will give the first matching value
+db.students.findOne({course:"Btech"})
+
+if you want to the specific info regsrding about the element (projection)
+ db.students.find({course:"Btech"},{name:1,age:1})
+or meathod 2
+ db.students.find({course:"Btech"}).projection({name:1,course:1,_id:0})
+
+to count
+ db.students.find({course:"bsc"}).count()
+
+to sort the collection
+db.students.find().sort({age:1})
+according to age as example in (assending order 1), (decending oreder -1)
+
+to show limited value
+ db.students.find().limit(3)
+
+to skip the upper value with limit
+ db.students.find().limit(3).skip(1)
+
+want to find all with course honey
+db.students.find({course:{$eq:"bsc"}})
+
+all value less than equal to some vlaue
+db.students.find({age:{$lte:30}})
+
+all value not equal to that value
+db.students.find({age:{$ne:30}})
+
+similarly with
+$gt:greater than equal to
+$gte :greater and equal 
+$lt:less than
+$lte:less than and equal to
+$in:[] give all value data whose value in this array
+$nin[] give all value data whose value not in this array
+
+
+using comparision operators in update command
+ db.students.updateMany(
+         {age:{$lt:30}},
+         {$set:{course:"BCA"}}
+       );
+
+db.students.deleteMany(
+...          {age:{$lt:40}}
+...        );

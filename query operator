@@ -1,0 +1,8 @@
+used to find in which document course exist
+or to check any element
+db.students.find({course:{$exist:true}})
+
+to check or to find prop is of which type
+db.students.find({age:{$type:"string"}})
+also chech multiple values
+db.students.find({age:{$type:["int","bool"]}})

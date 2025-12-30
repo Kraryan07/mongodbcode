@@ -1,0 +1,36 @@
+find filter show before and after value {returnDocument},{projection to check selected valuw}
+db.students.findOneAndUpdate(
+            {name:"ullu"},---->filter
+            {$set:{age:34}},---->prop
+            {
+                returnDocument:"after",
+                projection:{name:1,age:1,_id:0}
+            }
+);
+
+if the filter is not found it will give null
+but want to add searched value
+db.students.findOneAndUpdate(
+            {name:"kohli"},
+            {$set:{age:34,course:"bsc"}},
+            {
+                returnDocument:"after",
+                projection:{name:1,age:1,_id:0},
+                upsert:true
+             }
+         );//using upsert prop
+
+sort prop(1 for accending order) and (-1 for decending order)
+using sort we can update the result
+db.students.findOneAndUpdate(
+            {name:"kohli"},
+            {$set:{age:34,course:"bsc"}},
+            {
+               sort:{age:1}
+             }
+         );
+for finding and deleting 
+db.students.findOneAndDelete(
+            {name:"panna"},
+            {projection:{name:1,age:1}}
+         );

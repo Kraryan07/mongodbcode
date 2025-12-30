@@ -1,0 +1,18 @@
+this is very case sensitive in words return all words having khan
+db.students.find({name:{$regex:"khan"}})
+
+to remove case sesitive
+db.students.find({name:{$regex:/khan/}})
+
+students whose name starts with m
+ db.students.find({name:{$regex:"^m"}})
+
+ students whose name ends with u
+ db.students.find({name:{$regex:"u$"}})
+
+ expression operator to compare diff
+  db.students.find({$expr:{$gt:{"$spent","$budget"}}})
+
+  mod operator is 
+   db.students.find({age:{$mod:[5,0]}});
+   divide every document age value by 5 and whose rem is 0 return those document

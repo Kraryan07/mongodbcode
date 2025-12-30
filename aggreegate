@@ -1,0 +1,66 @@
+aggreegate more property to find documnet
+db.students.aggregate(
+            [{$match:{age:{$gt:20}}}]
+         )
+multiple prop
+ db.students.aggregate(
+           [
+            {
+              $match:{$and:[
+                {age:{$gt:20}},
+                {course:"bsc"}
+              ]}
+            }
+           ]
+         )
+
+count will return the doc have all prop
+db.students.aggregate(
+           [
+            {
+              $match:{$and:[
+                {age:{$gt:20}},
+                {course:"bsc"}
+              ]}
+            },
+            {$count:"name"}
+           ]
+         )
+
+or also sort accordingly
+db.students.aggregate(
+           [
+            {
+              $match:{$and:[
+                {age:{$gt:20}},
+                {course:"bsc"}
+              ]}
+            },
+            {$sort:{age:-1}}
+           ]
+         )
+
+isvalidage is true if document follow it vive ver
+db.students.aggregate(
+           [
+            {$sort:{age:-1}},
+            {$project:{name:1,age:1,_id:0,-->"same as projection"
+            isValidAge:{$gt:["$age",40]}
+             }
+            }
+           ]
+         )
+
+it will sort the prop and count it
+db.students.aggregate(
+            [
+                {$sortByCount:"$course"}
+            ]
+         );
+
+sample will return random document of given size
+ db.students.aggregate(
+            [
+                {$sample:{size:2}}
+            ]
+         );
